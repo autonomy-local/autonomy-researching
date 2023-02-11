@@ -4,4 +4,9 @@ import { render } from 'solid-js/web'
 import App from './App'
 import './index.css'
 
-render(() => <App />, document.getElementById('root'))
+// 動くがVSCode上でエラーになるので書き方を変更する
+// render(() => <App />, document.getElementById('root'))
+
+const root = document.getElementById("root");
+
+render(() => <App />, root!);
