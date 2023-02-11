@@ -1,7 +1,7 @@
 {
   "hosting": {
     "hosting": {
-      "public": "dist"
+      "public": "LAA-App/dist"
     },
     "ignore": [
       "firebase.json",
