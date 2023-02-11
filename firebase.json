@@ -1,12 +1,16 @@
 {
   "hosting": {
-    "hosting": {
-      "public": "LAA-App/dist"
-    },
-    "ignore": [
+    "public": "LAA-App/dist",
+    "igonore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   },
   "emulators": {
