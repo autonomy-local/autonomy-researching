@@ -11,14 +11,33 @@ const FileImporter = () => {
   );
 };
 
-const fileAccessor = async () => {
-  // we use File System Access API to access the file
-  // https://web.dev/file-system-access/
-  // https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API
-  // https://wicg.github.io/file-system-access/
-  // https://developer.chrome.com/articles/file-system-access/
+const Table = () => {
+  return (
+    <div class='table'>
+      <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+    </tr>
+    <tr>
+      <td>Jane Doe</td>
+      <td>jane@example.com</td>
+    </tr>
+  </tbody>
+</table>
 
-  // check if the API is available
+    </div>
+  );
+};
+
+const fileAccessor = async () => {
   if (!('showOpenFilePicker' in window)) {
     alert('File System Access API is not available');
     return;
@@ -37,7 +56,10 @@ const fileAccessor = async () => {
     //@ts-ignore
     const [fileHandle] = await window.showOpenFilePicker(pickerOptions);
     const file = await fileHandle.getFile();
-    console.log(file);
+    const fileText = await file.text();
+    const lines: string[] = fileText.split(/\n/);
+    const result:string[][] = lines.map((line) => line.split(','));
+    console.log(result);
   }
   
 };
@@ -46,9 +68,8 @@ const CsvImport: Component = () => {
   return (
     <div class={main}>
       CsvImport Component working...
-      <div class='file-importer'>
         <FileImporter />
-      </div>
+        <Table />
     </div>
   );
 };
